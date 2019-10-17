@@ -1,0 +1,14 @@
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\bin\Debug\netcoreapp2.2\GDPRApp.deps.json
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\bin\Debug\netcoreapp2.2\GDPRApp.runtimeconfig.json
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\bin\Debug\netcoreapp2.2\GDPRApp.runtimeconfig.dev.json
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\bin\Debug\netcoreapp2.2\GDPRApp.dll
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\bin\Debug\netcoreapp2.2\GDPRApp.pdb
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\obj\Debug\netcoreapp2.2\GDPRApp.csprojAssemblyReference.cache
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\obj\Debug\netcoreapp2.2\GDPRApp.csproj.CoreCompileInputs.cache
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\obj\Debug\netcoreapp2.2\GDPRApp.RazorAssemblyInfo.cache
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\obj\Debug\netcoreapp2.2\GDPRApp.RazorAssemblyInfo.cs
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\obj\Debug\netcoreapp2.2\GDPRApp.AssemblyInfoInputs.cache
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\obj\Debug\netcoreapp2.2\GDPRApp.AssemblyInfo.cs
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\obj\Debug\netcoreapp2.2\GDPRApp.RazorTargetAssemblyInfo.cache
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\obj\Debug\netcoreapp2.2\GDPRApp.dll
+C:\Users\ingaz\source\repos\GDPRApp\GDPRApp\obj\Debug\netcoreapp2.2\GDPRApp.pdb
