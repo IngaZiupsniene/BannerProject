@@ -4,8 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using GDPRApp.IService;
 using GDPRApp.Model;
+using GDPRApp.Service;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GDPRApp.Controllers
@@ -13,36 +16,39 @@ namespace GDPRApp.Controllers
     [Route("api/[controller]")]
     [Produces("application/json")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class InformController : ControllerBase
     {
-     
+        IInformRepository informRepository = new InformRepository();
+
         [HttpGet]
         [EnableCors("CorsPolicy")]
-        public void Get() {}
+        public void Get() { }
 
 
 
         [HttpPost]
-        [EnableCors("CorsPolicy")]        
-        public HttpResponseMessage Post([FromBody] AppUser appuser)
+        [EnableCors("CorsPolicy")]
+        public IActionResult Post([FromBody] RegUser regUser)
         {
-            string toReturn = string.Empty;
+            var informUser = new RegUser();
             try
             {
                 if (ModelState.IsValid)
                 {
-                    return new HttpResponseMessage(HttpStatusCode.OK);
+                    informUser = informRepository.Create(regUser);
+
+                    return Ok(informUser);
                 }
                 else
                 {
-                    return new HttpResponseMessage (HttpStatusCode.BadRequest);
+                    return BadRequest(regUser);
                 }
             }
-            catch 
+            catch
             {
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
-            }           
+                return BadRequest(regUser);
+
+            }
         }
-       
     }
 }
