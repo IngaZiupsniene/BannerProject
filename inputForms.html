@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+<h2 id="returnMessage"></h2>
+
+   <input type="text" id="FirstName" placeholder="*First name"> <p style="color:red" id="messageFirstName"></p><br>
+   <input type="text" id="LastName" placeholder="*Last name"> <p style="color:red" id="messageLastName"></p><br>
+<select id="CompanySize">  
+  <option selected="selected">*Company Size</option>
+  <option>1-10 employees</option>
+  <option>11-100 employees</option>
+  <option>100+ employees</option>
+</select><p style="color:red" id="messageCompanySize"></p><br>  
+<input type="text" id="Email" placeholder="*Email"> <p style="color:red" id="messageEmail"></p><br>
+<select id="CompanyType">  
+  <option selected="selected">*Company Type</option>
+  <option>Advertiser</option>
+  <option>Agency</option>
+  <option>Partner</option>
+  <option>Publisher</option>
+  <option>Other</option>
+</select><p style="color:red" id="messageCompanyType"></p><br>  
+<select id="Country">  
+  <option selected="selected">*Country</option>
+  <option>Lithuania</option>
+  <option>USA</option>
+  <option>Latvia</option>
+  <option>Other</option>
+</select><p style="color:red" id="messageCountry"></p><br>
+<input type="text" id="Company" placeholder="*Company"><p style="color:red" id="messageCompany"></p><br>
+<textarea id="Message" placeholder="Message"></textarea>
+<br>
+<button type="submit" onClick="SendForm()">Submit</button>
+
+</body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+function SendForm() {
+        var RegistrationFormData= {
+            FirstName: $("#FirstName").val(),
+            LastName:$("#LastName").val(),
+   CompanySize:$("#CompanySize").val(),
+   Email:$("#Email").val(),
+   CompanyType:$("#CompanyType").val(),
+   Country:$("#Country").val(),
+   Company:$("#Company").val(),
+            Message:$("#Message").val()            
+        }      
+        $.ajax({
+            url: 'http://localhost:5000/api/Inform',
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(RegistrationFormData),
+            success: function(msg) {
+console.log(msg);
+ document.getElementById("returnMessage").innerHTML = "Grįžtamoji žinutė "+ msg.firstName;
+               
+            },
+            error: function(e) {
+var err = JSON.parse(e.responseText);
+var err1 = err.errors;
+if(err.errors.FirstName){document.getElementById("messageFirstName").innerHTML = err.errors.FirstName; }
+if(err.errors.LastName){document.getElementById("messageLastName").innerHTML = err.errors.LastName; }
+if(err.errors.CompanySize){document.getElementById("messageCompanySize").innerHTML = err.errors.CompanySize; }
+if(err.errors.Email){document.getElementById("messageEmail").innerHTML = err.errors.Email; }
+if(err.errors.CompanyType){document.getElementById("messageCompanyType").innerHTML = err.errors.CompanyType;}
+if(err.errors.Country){document.getElementById("messageCountry").innerHTML = err.errors.Country;}
+if(err.errors.Company){document.getElementById("messageCompany").innerHTML = err.errors.Company;}
+   console.log(e);
+  }
+           
+        });
+    }
+
+
+</script>
+
+</html>
