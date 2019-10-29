@@ -15,34 +15,40 @@ namespace GDPRApp.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-     
+
         [HttpGet]
         [EnableCors("CorsPolicy")]
-        public void Get() {}
+        public void Get() { }
 
 
 
         [HttpPost]
-        [EnableCors("CorsPolicy")]        
-        public HttpResponseMessage Post([FromBody] AppUser appuser)
+        [EnableCors("CorsPolicy")]
+        public string Post([FromBody] AppUser appuser)
         {
-            string toReturn = string.Empty;
-            try
+            if (!string.IsNullOrEmpty(appuser.UserEmail) && !string.IsNullOrEmpty(appuser.UserPassword))
             {
-                if (ModelState.IsValid)
+                if (appuser.UserPassword.Equals(appuser.UserPasswordRepeat))
                 {
-                    return new HttpResponseMessage(HttpStatusCode.OK);
+                    if (appuser.Consent)
+                    {
+                        return "Ok";
+                    }
+                    else
+                    {
+                        return "Will not register because you have not given consent";
+                    }
                 }
                 else
                 {
-                    return new HttpResponseMessage (HttpStatusCode.BadRequest);
+                    return "Passwords not match!!!";
                 }
             }
-            catch 
+            else
             {
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
-            }           
+                return "Email and password is required";
+            }
         }
-       
+
     }
 }

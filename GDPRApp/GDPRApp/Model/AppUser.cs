@@ -8,8 +8,10 @@ namespace GDPRApp.Model
 {
     public class AppUser
     {
-        [Required]
+       
         public string UserEmail {get; set;}
         public string UserPassword {get; set; }
+        public string UserPasswordRepeat { get; set; }
+        public bool Consent { get; set; }
     }
 }
